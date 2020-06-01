@@ -19,13 +19,13 @@ function buildMetadata(sample) {
       const otu_ids = result.otu_ids;
       const otu_labels = result.otu_labels;
       const sample_values = result.sample_values;
-      const bLayout = {
+      const bubbleLayout = {
         hovermode: "closest",
         xaxis: { title: "OTU ID" },
         height: 510,
         width: 500
       };
-      const bData = [
+      const bubbleData = [
         {
           x: otu_ids,
           y: sample_values,
@@ -39,9 +39,9 @@ function buildMetadata(sample) {
         }
       ];
   
-      Plotly.newPlot("bubble", bData, bLayout);
+      Plotly.newPlot("bubble", bubbleData, bubbleLayout);
       const yticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
-      const bData = [
+      const barData = [
         {
           y: yticks,
           x: sample_values.slice(0, 10).reverse(),
@@ -50,14 +50,14 @@ function buildMetadata(sample) {
           orientation: "h",
         }
       ];
-      const bLayout = {
+      const barLayout = {
         showlegend: false,
         height: 600,
         width: 1200,
         sizemode: "area",
         hovermode:"closet",
         xaxis:{title:"OTU_ID"}
-       };
+      };
       Plotly.newPlot("bar", barData, barLayout);
     });
   }
